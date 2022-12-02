@@ -1,3 +1,5 @@
+import { NavLink } from 'react-router-dom';
+
 import styles from './Navbar.module.css';
 
 const Navbar = () => {
@@ -5,29 +7,29 @@ const Navbar = () => {
     <nav className={styles.nav}>
       <ul>
         <li>
-          <a className={styles.item} href="/home">
+          <NavLink className={styles.item} to="/profile">
             Profile
-          </a>
+          </NavLink>
         </li>
         <li>
-          <a className={styles.item} href="/home">
+          <NavLink className={styles.item} to="/dialogs">
             Messages
-          </a>
+          </NavLink>
         </li>
         <li>
-          <a className={styles.item} href="/home">
+          <NavLink className={styles.item} to="/News">
             News
-          </a>
+          </NavLink>
         </li>
         <li>
-          <a className={styles.item} href="/home">
+          <NavLink className={styles.item} to="/Music">
             Music
-          </a>
+          </NavLink>
         </li>
         <li>
-          <a className={styles.item} href="/home">
+          <NavLink className={styles.item} to="/Settings">
             Settings
-          </a>
+          </NavLink>
         </li>
       </ul>
     </nav>
