@@ -8,11 +8,11 @@
   grid-gap: 10px;
   height: 100vh;
 }
-.app-wrapper__content {
+.content-wrapper {
   grid-area: content;
   background-color: rgb(53, 170, 164);
 }
-.app-wrapper__content img {
+.content-wrapper img {
   width: 800px;
 }
 

@@ -10,7 +10,7 @@ function App() {
     <div className="app-wrapper">
       <Header />
       <Navbar />
-      <div className="app-wrapper__content">
+      <div className="content-wrapper">
         {/* <Dialog /> */}
         <Profile />
       </div>
