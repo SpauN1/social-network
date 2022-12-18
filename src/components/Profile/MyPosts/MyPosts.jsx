@@ -1,6 +1,6 @@
 import Post from './Post/Post';
 
-import style from './MyPosts.module.css';
+import styles from './MyPosts.module.css';
 
 const MyPosts = () => {
   const postsData = [
@@ -11,7 +11,7 @@ const MyPosts = () => {
     <Post message={post.message} likesCount={post.likesCount} />
   ));
   return (
-    <div className={style.postsWrapper}>
+    <div className={styles.postsWrapper}>
       <h3> My post</h3>
       <div>
         <div>
@@ -21,7 +21,7 @@ const MyPosts = () => {
           <button>Add post</button>
         </div>
       </div>
-      <div className={style.posts}>{postElements}</div>
+      <div className={styles.posts}>{postElements}</div>
     </div>
   );
 };
