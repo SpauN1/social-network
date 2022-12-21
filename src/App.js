@@ -8,6 +8,25 @@ import Dialogs from './components/Dialogs/Dialogs';
 import './App.css';
 
 function App() {
+  const postsData = [
+    {id: 1, message: 'Hi, how are you?', likesCount: 12},
+    {id: 2, message: "It's my first post", likesCount: 8},
+  ];
+  const dialogsData = [
+    {id: 1, name: 'Andrey'},
+    {id: 2, name: 'Sasha'},
+    {id: 3, name: 'Viktor'},
+    {id: 4, name: 'Alexey'},
+    {id: 5, name: 'Masha'},
+    {id: 6, name: 'Sveta'},
+  ];
+  const messagesData = [
+    {id: 1, message: 'Hi'},
+    {id: 2, message: 'How are you?'},
+    {id: 3, message: 'yo'},
+    {id: 4, message: 'yo'},
+    {id: 5, message: 'yo'},
+  ];
   return (
     <BrowserRouter>
       <div className="app-wrapper">
@@ -15,8 +34,8 @@ function App() {
         <Navbar />
         <div className="content-wrapper">
           <Routes>
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/dialogs/*" element={<Dialogs />} />
+            <Route path="/profile" element={<Profile postsData={postsData} />} />
+            <Route path="/dialogs/*" element={<Dialogs dialogsData={dialogsData} messagesData={messagesData} />} />
           </Routes>
         </div>
       </div>
