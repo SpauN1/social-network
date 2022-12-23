@@ -1,8 +1,12 @@
+import { rerenderEntireTree } from '../../render';
+
 const dataState = {
   profilePage: {
     postsData: [
       { id: 1, message: 'Hi, how are you?', likesCount: 12 },
       { id: 2, message: "It's my first post", likesCount: 8 },
+      { id: 3, message: "It's my", likesCount: 11 },
+      { id: 4, message: 'I like', likesCount: 11 },
     ],
   },
   dialogsPage: {
@@ -24,4 +28,15 @@ const dataState = {
   },
 };
 
+const addPost = (postMessage) => {
+  const newPost = {
+    id: 5,
+    message: postMessage,
+    likesCount: 0,
+  };
+  dataState.profilePage.postsData.push(newPost);
+  rerenderEntireTree(dataState);
+};
+
 export default dataState;
+export { addPost };

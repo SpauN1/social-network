@@ -17,7 +17,12 @@ function App(props) {
           <Routes>
             <Route
               path="/profile"
-              element={<Profile dataState={props.dataState.profilePage} />}
+              element={
+                <Profile
+                  dataState={props.dataState.profilePage}
+                  addPost={props.addPost}
+                />
+              }
             />
             <Route
               path="/dialogs/*"
