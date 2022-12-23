@@ -8,6 +8,7 @@ const dataState = {
       { id: 3, message: "It's my", likesCount: 11 },
       { id: 4, message: 'I like', likesCount: 11 },
     ],
+    newPostText: 'new entered text',
   },
   dialogsPage: {
     dialogsData: [
@@ -28,15 +29,22 @@ const dataState = {
   },
 };
 
-const addPost = (postMessage) => {
+const addPost = () => {
   const newPost = {
     id: 5,
-    message: postMessage,
+    message: dataState.profilePage.newPostText,
     likesCount: 0,
   };
   dataState.profilePage.postsData.push(newPost);
+  dataState.profilePage.newPostText = '';
+  rerenderEntireTree(dataState);
+};
+
+const updateNewPostText = (newText) => {
+  dataState.profilePage.newPostText = newText;
   rerenderEntireTree(dataState);
 };
 
 export default dataState;
 export { addPost };
+export { updateNewPostText };

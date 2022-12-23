@@ -19,8 +19,9 @@ function App(props) {
               path="/profile"
               element={
                 <Profile
-                  dataState={props.dataState.profilePage}
+                  profilePage={props.dataState.profilePage}
                   addPost={props.addPost}
+                  updateNewPostText={props.updateNewPostText}
                 />
               }
             />
