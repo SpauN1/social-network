@@ -19,7 +19,7 @@ function App(props) {
               path="/profile"
               element={
                 <Profile
-                  profilePage={props.dataState.profilePage}
+                  profilePage={props.state.profilePage}
                   addPost={props.addPost}
                   updateNewPostText={props.updateNewPostText}
                 />
@@ -27,7 +27,7 @@ function App(props) {
             />
             <Route
               path="/dialogs/*"
-              element={<Dialogs dataState={props.dataState.dialogsPage} />}
+              element={<Dialogs dataState={props.state.dialogsPage} />}
             />
           </Routes>
         </div>

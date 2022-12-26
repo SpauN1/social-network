@@ -2,23 +2,22 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 import App from './App';
-import dataState from './components/dataState/dataState';
-import { addPost, updateNewPostText, subscribe } from './components/dataState/dataState';
+import store from './components/dataState/dataState';
 
 import './index.css';
 
-const rerenderEntireTree = (dataState) => {
+const rerenderEntireTree = (state) => {
   const root = ReactDOM.createRoot(document.getElementById('root'));
   root.render(
     <React.StrictMode>
       <App
-        dataState={dataState}
-        addPost={addPost}
-        updateNewPostText={updateNewPostText}
+        state={state}
+        addPost={store.addPost.bind(store)}
+        updateNewPostText={store.updateNewPostText.bind(store)}
       />
     </React.StrictMode>
   );
 };
 
-rerenderEntireTree(dataState);
-subscribe(rerenderEntireTree);
+rerenderEntireTree(store.getState());
+store.subscribe(rerenderEntireTree);
