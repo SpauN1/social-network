@@ -28,12 +28,12 @@ const store = {
     },
   },
 
+  _callSubscriber() {
+    console.log('State changed');
+  },
+  
   getState() {
     return this._state;
-  },
-
-  rerenderEntireTree() {
-    console.log('State changed');
   },
 
   addPost() {
@@ -44,16 +44,16 @@ const store = {
     };
     this._state.profilePage.postsData.push(newPost);
     this._state.profilePage.newPostText = '';
-    this._rerenderEntireTree(this._state);
+    this._callSubscriber(this._state);
   },
 
   updateNewPostText(newText) {
     this._state.profilePage.newPostText = newText;
-    this._rerenderEntireTree(this._state);
+    this._callSubscriber(this._state);
   },
 
   subscribe(observer) {
-    this._rerenderEntireTree = observer;
+    this._callSubscriber = observer;
   },
 };
 
