@@ -1,8 +1,8 @@
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const ADD_POST = 'ADD_POST';
+const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
 
 const profileReducer = (state, action) => {
-  if (action.type === 'ADD-POST') {
+  if (action.type === ADD_POST) {
     const newPost = {
       id: 5,
       message: state.newPostText,
@@ -10,7 +10,7 @@ const profileReducer = (state, action) => {
     };
     state.postsData.push(newPost);
     state.newPostText = '';
-  } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+  } else if (action.type === UPDATE_NEW_POST_TEXT) {
     state.newPostText = action.newText;
   }
 
