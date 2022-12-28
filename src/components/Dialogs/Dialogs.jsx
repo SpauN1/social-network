@@ -1,9 +1,7 @@
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
-import {
-  updateNewMessageBodyActionCreator,
-  sendMessageActionCreator,
-} from '../dataState/dataState';
+import { updateNewMessageBodyActionCreator } from '../dataState/reducers/dialogsReducer';
+import { sendMessageActionCreator } from '../dataState/reducers/dialogsReducer';
 
 import styles from './Dialogs.module.css';
 
