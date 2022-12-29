@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 import App from './App';
-import store from './components/dataState/dataState';
+import store from './components/dataState/store';
 
 import './index.css';
 
