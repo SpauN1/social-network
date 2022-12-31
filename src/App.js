@@ -15,19 +15,8 @@ function App(props) {
         <Navbar />
         <div className="content-wrapper">
           <Routes>
-            <Route
-              path="/profile"
-              element={
-                <Profile
-                  profilePage={props.state.profilePage}
-                  dispatch={props.dispatch}
-                />
-              }
-            />
-            <Route
-              path="/dialogs/*"
-              element={<Dialogs store={props.store} />}
-            />
+            <Route path="/profile" element={<Profile store={props.store} />} />
+            <Route path="/dialogs/*" element={<Dialogs store={props.store} />} />
           </Routes>
         </div>
       </div>
