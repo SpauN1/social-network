@@ -7,19 +7,11 @@ import store from './redux/redux-store';
 
 import './index.css';
 
-const rerenderEntireTree = () => {
-  const root = ReactDOM.createRoot(document.getElementById('root'));
-  root.render(
-    <React.StrictMode>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </React.StrictMode>
-  );
-};
-
-rerenderEntireTree();
-
-store.subscribe(() => {
-  rerenderEntireTree();
-});
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </React.StrictMode>
+);
