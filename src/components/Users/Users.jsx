@@ -1,36 +1,16 @@
+import axios from 'axios';
+
+import userPhoto from '../../assets/images/user.png';
+
 import styles from './Users.module.css';
 
 const Users = (props) => {
   if (props.users.length === 0) {
-    props.setUsers([
-      {
-        id: 1,
-        photoUrl:
-          'https://krasivosti.pro/uploads/posts/2021-10/1634681353_26-krasivosti-pro-p-svinki-zhivotnie-krasivo-foto-30.jpg',
-        followed: false,
-        fullName: 'Andrei',
-        status: 'I am a boss',
-        location: { city: 'Vitebsk', country: 'Belarus' },
-      },
-      {
-        id: 2,
-        photoUrl:
-          'https://krasivosti.pro/uploads/posts/2021-10/1634681353_26-krasivosti-pro-p-svinki-zhivotnie-krasivo-foto-30.jpg',
-        followed: true,
-        fullName: 'Sasha',
-        status: 'I am a boss too',
-        location: { city: 'Moscow', country: 'Russia' },
-      },
-      {
-        id: 3,
-        photoUrl:
-          'https://krasivosti.pro/uploads/posts/2021-10/1634681353_26-krasivosti-pro-p-svinki-zhivotnie-krasivo-foto-30.jpg',
-        followed: false,
-        fullName: 'Alexei',
-        status: 'I am a boss too',
-        location: { city: 'Minsk', country: 'Belarus' },
-      },
-    ]);
+    axios
+      .get('https://social-network.samuraijs.com/api/1.0/users')
+      .then((response) => {
+        props.setUsers(response.data.items);
+      });
   }
   return (
     <div>
@@ -40,7 +20,7 @@ const Users = (props) => {
             <div>
               <img
                 className={styles.userPhoto}
-                src={users.photoUrl}
+                src={users.photos.small != null ? users.photos.small : userPhoto}
                 alt="avatar"
               />
             </div>
@@ -66,12 +46,12 @@ const Users = (props) => {
           </span>
           <span>
             <span>
-              <div>{users.fullName}</div>
+              <div>{users.Name}</div>
               <div>{users.status}</div>
             </span>
             <span>
-              <div>{users.location.country}</div>
-              <div>{users.location.city}</div>
+              <div>{'users.location.country'}</div>
+              <div>{'users.location.city'}</div>
             </span>
           </span>
         </div>
