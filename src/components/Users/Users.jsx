@@ -1,67 +1,71 @@
+import { Component } from 'react';
 import axios from 'axios';
 
 import userPhoto from '../../assets/images/user.png';
 
 import styles from './Users.module.css';
 
-const Users = (props) => {
-  const getUsers = () => {
-    if (props.users.length === 0) {
-      axios
-        .get('https://social-network.samuraijs.com/api/1.0/users')
-        .then((response) => {
-          props.setUsers(response.data.items);
-        });
-    }
+class Users extends Component {
+  constructor(props) {
+    super(props);
+
+    axios
+      .get('https://social-network.samuraijs.com/api/1.0/users')
+      .then((response) => {
+        this.props.setUsers(response.data.items);
+      });
   }
 
-  return (
-    <div>
-      <button onClick={getUsers}>Get Users</button>
-      {props.users.map((users) => (
-        <div key={users.id}>
-          <span>
-            <div>
-              <img
-                className={styles.userPhoto}
-                src={users.photos.small != null ? users.photos.small : userPhoto}
-                alt="avatar"
-              />
-            </div>
-            <div>
-              {users.followed ? (
-                <button
-                  onClick={() => {
-                    props.unfollow(users.id);
-                  }}
-                >
-                  Unfollow
-                </button>
-              ) : (
-                <button
-                  onClick={() => {
-                    props.follow(users.id);
-                  }}
-                >
-                  Follow
-                </button>
-              )}
-            </div>
-          </span>
-          <span>
+  render() {
+    return (
+      <div>
+        {this.props.users.map((users) => (
+          <div key={users.id}>
             <span>
-              <div>{users.Name}</div>
-              <div>{users.status}</div>
+              <div>
+                <img
+                  className={styles.userPhoto}
+                  src={
+                    users.photos.small != null ? users.photos.small : userPhoto
+                  }
+                  alt="avatar"
+                />
+              </div>
+              <div>
+                {users.followed ? (
+                  <button
+                    onClick={() => {
+                      this.props.unfollow(users.id);
+                    }}
+                  >
+                    Unfollow
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => {
+                      this.props.follow(users.id);
+                    }}
+                  >
+                    Follow
+                  </button>
+                )}
+              </div>
             </span>
             <span>
-              <div>{'users.location.country'}</div>
-              <div>{'users.location.city'}</div>
+              <span>
+                <div>{users.Name}</div>
+                <div>{users.status}</div>
+              </span>
+              <span>
+                <div>{'users.location.country'}</div>
+                <div>{'users.location.city'}</div>
+              </span>
             </span>
-          </span>
-        </div>
-      ))}
-    </div>
-  );
-};
+          </div>
+        ))}
+      </div>
+    );
+  }
+}
 
 export default Users;
