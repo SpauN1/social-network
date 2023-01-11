@@ -7,7 +7,7 @@ import {
   setUsers,
   unfollow,
   setCurrentPage,
-  setUsersTotalCount,
+  setTotalUsersCount,
   toggleIsFetching,
 } from '../../redux/reducers/usersReducer';
 import Users from './Users';

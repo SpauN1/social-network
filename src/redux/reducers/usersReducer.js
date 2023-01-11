@@ -71,7 +71,7 @@ const setCurrentPage = (currentPage) => ({
   currentPage,
 });
 
-const setUsersTotalCount = (totalUsersCount) => ({
+const setTotalUsersCount = (totalUsersCount) => ({
   type: SET_TOTAL_USERS_COUNT,
   count: totalUsersCount,
 });
@@ -87,6 +87,6 @@ export {
   unfollow,
   setUsers,
   setCurrentPage,
-  setUsersTotalCount,
+  setTotalUsersCount,
   toggleIsFetching,
 };
