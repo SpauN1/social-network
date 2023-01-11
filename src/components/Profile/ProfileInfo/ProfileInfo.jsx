@@ -1,16 +1,24 @@
+import Preloader from '../../common/Preloader/Preloader';
+
 import styles from './ProfileInfo.module.css';
 
-const ProfileInfo = () => {
+const ProfileInfo = (props) => {
+  if (!props.profile) {
+    return <Preloader />;
+  }
   return (
     <div>
       <div>
         <img
           className={styles.img}
           src="https://wp-s.ru/wallpapers/2/99/288935050117095/tropicheskij-plyazh-na-poberezhe-golubogo-avstralijskogo-morya.jpg"
-          alt="beach"
+          alt="userPhoto"
         />
       </div>
-      <div className={styles.description}>ava + description</div>
+      <div className={styles.description}>
+        <img src={props.profile.photos.large} alt="userPhoto" />
+        ava + description
+      </div>
     </div>
   );
 };
