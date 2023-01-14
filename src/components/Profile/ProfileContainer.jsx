@@ -1,14 +1,25 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 import Profile from './Profile';
 import { setUserProfile } from '../../redux/reducers/profileReducer';
 
+function withRouter(Component) {
+  function ComponentWithRouterProp(props) {
+    let location = useLocation();
+    let navigate = useNavigate();
+    let params = useParams();
+    return <Component {...props} router={{ location, navigate, params }} />;
+  }
+
+  return ComponentWithRouterProp;
+}
+
 class ProfileContainer extends Component {
   componentDidMount() {
-    let userId = this.props.match.params.userId;
+    let userId = this.props.router.params.userId;
 
     if (!userId) {
       userId = 2;
@@ -29,6 +40,6 @@ const mapStateToProps = (state) => ({
   profile: state.profilePage.profile,
 });
 
-const WithUrlDataContainerComponent = withRouter(ProfileContainer)
-
-export default connect(mapStateToProps, { setUserProfile })(WithUrlDataContainerComponent);
+export default connect(mapStateToProps, { setUserProfile })(
+  withRouter(ProfileContainer)
+);
