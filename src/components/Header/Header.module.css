@@ -1,7 +1,13 @@
 .header {
   grid-area: header;
   background-color: rgb(53, 219, 20);
+  position: relative;
 }
 .header img {
   width: 20px;
+}
+.loginBlock {
+  position: absolute;
+  right: 17px;
+  top: 8px;
 }
