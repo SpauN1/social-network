@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom';
+import axios from 'axios';
 
 import userPhoto from '../../assets/images/user.png';
 import styles from './Users.module.css';
@@ -54,7 +55,22 @@ const Users = (props) => {
               ) : (
                 <button
                   onClick={() => {
-                    props.follow(users.id);
+                    axios
+                      .post(
+                        `https://social-network.samuraijs.com/api/1.0/follow/${users.id}`,
+                        {},
+                        {
+                          withCredentials: true,
+                          headers: {
+                            'API-KEY': 'b50ff112-96c4-431a-ab15-f4985de0e9b7',
+                          },
+                        }
+                      )
+                      .then((response) => {
+                        if (response.data.resultCode === 0) {
+                          props.follow(users.id);
+                        }
+                      });
                   }}
                 >
                   Follow
