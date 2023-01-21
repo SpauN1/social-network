@@ -47,7 +47,22 @@ const Users = (props) => {
               {users.followed ? (
                 <button
                   onClick={() => {
-                    props.unfollow(users.id);
+                    axios
+                      .delete(
+                        `https://social-network.samuraijs.com/api/1.0/follow/${users.id}`,
+                        {
+                          witchCredentials: true,
+                          withCredentials: true,
+                          headers: {
+                            'API-KEY': 'b50ff112-96c4-431a-ab15-f4985de0e9b7',
+                          },
+                        }
+                      )
+                      .then((response) => {
+                        if (response.data.resultCode === 0) {
+                          props.unfollow(users.id);
+                        }
+                      });
                   }}
                 >
                   Unfollow
