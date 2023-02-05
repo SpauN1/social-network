@@ -42,13 +42,13 @@ const dialogsReducer = (state = initialState, action) => {
   }
 };
 
-const sendMessageActionCreator = () => {
+export const sendMessageActionCreator = () => {
   return {
     type: SEND_MESSAGE,
   };
 };
 
-const updateNewMessageBodyActionCreator = (body) => {
+export const updateNewMessageBodyActionCreator = (body) => {
   return {
     type: UPDATE_NEW_MESSAGE_BODY,
     body: body,
@@ -56,4 +56,3 @@ const updateNewMessageBodyActionCreator = (body) => {
 };
 
 export default dialogsReducer;
-export { sendMessageActionCreator, updateNewMessageBodyActionCreator };
